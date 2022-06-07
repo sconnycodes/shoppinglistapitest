@@ -18,6 +18,9 @@ const shoppingList = [
     },
 ]
 
+app.get(`/`, (req, res) => {
+    res.sendFile(__dirname + "/index.html")
+});
 
 app.get(`/api/shoppinglist`, (req, res) => {
     res.json(shoppingList)
