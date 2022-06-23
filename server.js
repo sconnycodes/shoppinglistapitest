@@ -28,10 +28,10 @@ MongoClient.connect(dbConnectionStr)
         collection = db.collection('shoppinglist')
         app.set('view engine', 'ejs')
     })
+    .catch(error => {console.error(error)});
 
 
 // The CRUD parts:
-
 app.get(`/`, (req, res) => {
     res.sendFile(__dirname + "/index.html")
 });
@@ -42,7 +42,12 @@ app.get(`/`, (req, res) => {
 
 // Adding items to the list:
 app.post('/shoppinglist', (req, res) => {
-    console.log('Hellooooooooooooooooo!')
+    console.log(req.body)
+    collection.insertOne(req.body)
+    .then(result => {
+        console.log(result)
+    })
+    .catch(error => console.error(error))
 });
 
 app.listen(process.env.PORT || PORT, () => {
