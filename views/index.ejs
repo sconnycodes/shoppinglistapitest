@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacShopping List</title>
+</head>
+<body>
+    <h1>The Shopping List</h1>
+    <p>API available via markmacshoppingapi.herokuapp.com/api/shoppinglist</p>
+
+
+    <form action="/shoppinglist" method="POST">
+        <input type="text" placeholder="item" name="item">
+        <input type="text" placeholder="category" name="category">
+        <button type="submit">Submit</button>
+    </form>
+
+    <ul class="shopping">
+        <!-- Loop through quotes -->
+        <% for(let i = 0; i < shopping.length; i++) {%>
+          <li class="shopping">
+            <!-- Output name from the iterated quote object -->
+            <span><%= shopping[i].item %></span>:
+            <!-- Output quote from the iterated quote object -->
+            <span><%= shopping[i].category %></span>
+          </li>
+        <% } %>
+      </ul>
+</body>
+</html>
