@@ -17,16 +17,16 @@
         <button type="submit">Submit</button>
     </form>
 
-    <ul class="shopping">
+    <ul id="shopping">
         <!-- Loop through quotes -->
         <% for(let i = 0; i < shopping.length; i++) {%>
-          <li class="shopping">
+          <li class="shoppingListItem">
             <!-- Output name from the iterated quote object -->
-            <span><%= shopping[i].item %></span>:
+            <span><%= shopping[i].item %></span> :
             <!-- Output quote from the iterated quote object -->
             <span><%= shopping[i].category %></span>
-            <button id="edit">Edit</button>
-            <button id="deleteItem">Delete</button>
+            <button class="editItem">Edit</button>
+            <button class="deleteItem">Delete</button>
           </li>
         <% } %>
     </ul>

@@ -65,7 +65,13 @@ app.post('/shoppinglist', (req, res) => {
     .catch(error => console.error(error))
 });
 
+// Editting items (PUT):
+app.put('/shoppinglist', (req, res) => {
+    console.log(req.body)
+  })
 
+
+// Delete item:
 
 
 // const shoppingList = [
