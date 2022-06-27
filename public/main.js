@@ -1,42 +1,28 @@
-const itemObj = document.querySelectorAll(".shoppingListItem")
-console.log(itemObj[0].children[0].innerText)
-console.log(itemObj[0].children[1].innerText)
-
 const shoppingList = document.querySelector('#shopping')
 
-shoppingList.addEventListener('click', _ => {
-  // Send PUT Request here
+shoppingList.addEventListener('click', e => {
   // First identify if edit or delete button clicked:
-    let target = event.target.innerText
-    console.log(event)
+    let target = e.target.innerText
+    
     if (target == "Edit"){
-        console.log("hi")
+        let itemText = e.path[1].children[0].innerText
+        let itemCat = e.path[1].children[1].innerText
+        editItem(itemText, itemCat)
     } else if (target == "Delete"){
         console.log("hello")
+    } 
+})
+
+// editItem function & form
+function editItem(itemText, itemCat){
+    document.querySelector(".editForm").classList.toggle("hidden")
+    document.querySelector(".editItemPlaceholder").value = itemText
+    document.querySelector(".editCategoryPlaceholder").value = itemCat
+};
+
+document.querySelector(".editForm").addEventListener("click", e => {
+    let edittarget = e.target.innerText
+    if(edittarget == "Cancel"){
+    document.querySelector(".editForm").classList.add("hidden")
     }
-//   let itemEdit = prompt("Enter item")
-//   let categoryEdit = prompt("Enter category")
-//   fetch("/shoppinglist", {
-//     method: "put",
-//     headers: {"Content-Type": "application/json"},
-//     body: JSON.stringify({
-//         item: itemEdit,
-//         category: categoryEdit
-//     })
-//   })
-})
-
-const deleteItem = document.querySelector('.deleteItem')
-
-deleteItem.addEventListener('click', _ => {
-  // Send DELETE Request here
-  // Get text from clicked item for "item" and "category"
- 
-//   fetch("/shoppinglist", {
-//     method: "delete",
-//     headers: {"Content-Type": "application/json"},
-//     body: JSON.stringify({
-//         name: ""
-//     })
-//   })
-})
+});

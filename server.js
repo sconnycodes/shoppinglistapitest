@@ -55,7 +55,7 @@ app.get(`/`, (req, res) => {
 
 
 // Adding items to the list:
-app.post('/shoppinglist', (req, res) => {
+app.post('/shoppinglist/add', (req, res) => {
     console.log(req.body)
     collection.insertOne(req.body)
     .then(result => {
@@ -66,7 +66,7 @@ app.post('/shoppinglist', (req, res) => {
 });
 
 // Editting items (PUT):
-app.put('/shoppinglist', (req, res) => {
+app.put('/shoppinglist/edit', (req, res) => {
     console.log(req.body)
   })
 

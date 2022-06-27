@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/style.css">
     <title>MacShopping List</title>
 </head>
 <body>
@@ -11,7 +13,7 @@
     <p>API available via markmacshoppingapi.herokuapp.com/api/shoppinglist</p>
 
 
-    <form action="/shoppinglist" method="POST">
+    <form action="/shoppinglist/add" method="POST">
         <input type="text" placeholder="item" name="item">
         <input type="text" placeholder="category" name="category">
         <button type="submit">Submit</button>
@@ -30,7 +32,13 @@
           </li>
         <% } %>
     </ul>
-
+  
+    <form action="/shoppinglist/edit" method="PUT" class="hidden editForm">
+      <input type="text" placeholder="" name="item" class="editItemPlaceholder">
+      <input type="text" placeholder="" name="category" class="editCategoryPlaceholder">
+      <button type="submit">Confirm Edit</button>
+      <button type="reset">Cancel</button>
+    </form>
 
   <script src="/main.js"></script>
 </body>
