@@ -13,16 +13,27 @@ shoppingList.addEventListener('click', e => {
     } 
 })
 
+// existing item data for sending to db to identify document to be edited:
+let itemTextPrev 
+let itemCategoryPrev
 // editItem function & form
 function editItem(itemText, itemCat){
     document.querySelector(".editForm").classList.toggle("hidden")
     document.querySelector(".editItemPlaceholder").value = itemText
     document.querySelector(".editCategoryPlaceholder").value = itemCat
+    itemTextPrev = itemText
+    itemCategoryPrev = itemCat
 };
+
 
 document.querySelector(".editForm").addEventListener("click", e => {
     let edittarget = e.target.innerText
     if(edittarget == "Cancel"){
-    document.querySelector(".editForm").classList.add("hidden")
+        document.querySelector(".editForm").classList.add("hidden")
+    } else if (edittarget == "Confirm Edit"){
+        let editrequest = {
+            itemTextPrev: itemTextPrev
+        }
+        fetch("/shoppinglistedit")
     }
 });

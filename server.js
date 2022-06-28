@@ -44,7 +44,6 @@ app.get(`/`, (req, res) => {
     // res.sendFile(__dirname + "/index.html")
     collection.find().toArray()
         .then(results => {
-            console.log(results)
             res.render("index.ejs", { shopping : results })
         })
         .catch(error => console.error(error))
@@ -55,7 +54,7 @@ app.get(`/`, (req, res) => {
 
 
 // Adding items to the list:
-app.post('/shoppinglist/add', (req, res) => {
+app.post('/shoppinglist', (req, res) => {
     console.log(req.body)
     collection.insertOne(req.body)
     .then(result => {
@@ -66,25 +65,23 @@ app.post('/shoppinglist/add', (req, res) => {
 });
 
 // Editting items (PUT):
-app.put('/shoppinglist/edit', (req, res) => {
+app.put('/shoppinglistedit', (req, res) => {
     console.log(req.body)
+    // collection.findOneAndUpdate(
+        
+    // )
+    // .then(result => {
+    //     console.log(result)
+    //     // res.redirect("/")
+    // })
+    // .catch(error => console.error(error))
+    
+    
   })
 
 
 // Delete item:
 
-
-// const shoppingList = [
-//     {
-//         "category": "household",
-//         "item": "dishwasher powder"
-//     },
-//     {
-//         "category": "fresh meat",
-//         "item": "chicken"
-//     },
-//     {
-//         "category": "frozen",
-//         "item": "chips"
-//     },
-// ]
+app.delete("/shoppinglist", (req, res) => {
+    console.log(req.body)
+})
