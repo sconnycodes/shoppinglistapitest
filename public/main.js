@@ -9,7 +9,10 @@ shoppingList.addEventListener('click', e => {
         let itemCat = e.path[1].children[1].innerText
         editItem(itemText, itemCat)
     } else if (target == "Delete"){
+        let itemText = e.path[1].children[0].innerText
+        let itemCat = e.path[1].children[1].innerText
         console.log("hello")
+        deleteItem(itemText,itemCat)
     } 
 })
 
@@ -26,14 +29,31 @@ function editItem(itemText, itemCat){
 };
 
 
-document.querySelector(".editForm").addEventListener("click", e => {
-    let edittarget = e.target.innerText
-    if(edittarget == "Cancel"){
-        document.querySelector(".editForm").classList.add("hidden")
-    } else if (edittarget == "Confirm Edit"){
-        let editrequest = {
-            itemTextPrev: itemTextPrev
-        }
-        fetch("/shoppinglistedit")
-    }
-});
+
+async function deleteItem(itemText,itemCat){
+    console.log(itemText, itemCat)
+    console.log(JSON.stringify({item: itemText, category: itemCat}))
+    const res = await fetch("/shoppinglistdelete", {
+        method: "DELETE",
+        body: JSON.stringify({item: itemText, category: itemCat}),
+        headers:{"Content-type": "application/json"}
+    })
+    const data = await res.json()
+            if (res.status === 201){
+              console.log("Deleted")
+            }
+}
+
+
+
+// document.querySelector(".editForm").addEventListener("click", e => {
+//     let edittarget = e.target.innerText
+//     if(edittarget == "Cancel"){
+//         document.querySelector(".editForm").classList.add("hidden")
+//     } else if (edittarget == "Confirm Edit"){
+//         let editrequest = {
+//             itemTextPrev: itemTextPrev
+//         }
+//         fetch("/shoppinglistedit")
+//     }
+// });

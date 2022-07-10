@@ -19,7 +19,7 @@ app.set('view engine', 'ejs')
 
 // Gotta listen out for stuff: 
 app.listen(process.env.PORT || PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+    console.log(`Server running`)
 });
 
 // Database connection:
@@ -41,17 +41,12 @@ MongoClient.connect(dbConnectionStr)
 // The CRUD parts:
 // get
 app.get(`/`, (req, res) => {
-    // res.sendFile(__dirname + "/index.html")
     collection.find().toArray()
         .then(results => {
             res.render("index.ejs", { shopping : results })
         })
         .catch(error => console.error(error))
-        
-    
 });
-
-
 
 // Adding items to the list:
 app.post('/shoppinglist', (req, res) => {
@@ -67,21 +62,23 @@ app.post('/shoppinglist', (req, res) => {
 // Editting items (PUT):
 app.put('/shoppinglistedit', (req, res) => {
     console.log(req.body)
-    // collection.findOneAndUpdate(
-        
-    // )
-    // .then(result => {
-    //     console.log(result)
-    //     // res.redirect("/")
-    // })
-    // .catch(error => console.error(error))
-    
-    
+  
   })
 
 
 // Delete item:
 
-app.delete("/shoppinglist", (req, res) => {
-    console.log(req.body)
-})
+app.delete("/shoppinglistdelete", async (req, res) => {
+    const item = req.body
+    await collection.deleteOne(item)
+    .then(item => {
+        res.status(201).json({message: "Item deleted", item})
+    })
+    .catch(error => {
+        res
+            .status(400)
+            .json({message: "an error occured", error: error.message})
+    })
+    })
+    
+
