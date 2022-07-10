@@ -7,12 +7,13 @@ shoppingList.addEventListener('click', e => {
     if (target == "Edit"){
         let itemText = e.path[1].children[0].innerText
         let itemCat = e.path[1].children[1].innerText
-        editItem(itemText, itemCat)
+        editItemShow(itemText, itemCat)
     } else if (target == "Delete"){
         let itemText = e.path[1].children[0].innerText
         let itemCat = e.path[1].children[1].innerText
+        let domListItem = e.path[1]
         console.log("hello")
-        deleteItem(itemText,itemCat)
+        deleteItem(itemText,itemCat,domListItem)
     } 
 })
 
@@ -20,7 +21,7 @@ shoppingList.addEventListener('click', e => {
 let itemTextPrev 
 let itemCategoryPrev
 // editItem function & form
-function editItem(itemText, itemCat){
+function editItemShow(itemText, itemCat){
     document.querySelector(".editForm").classList.toggle("hidden")
     document.querySelector(".editItemPlaceholder").value = itemText
     document.querySelector(".editCategoryPlaceholder").value = itemCat
@@ -28,11 +29,12 @@ function editItem(itemText, itemCat){
     itemCategoryPrev = itemCat
 };
 
+async function editItem(){
+    
+}
 
 
-async function deleteItem(itemText,itemCat){
-    console.log(itemText, itemCat)
-    console.log(JSON.stringify({item: itemText, category: itemCat}))
+async function deleteItem(itemText,itemCat, domListItem){
     const res = await fetch("/shoppinglistdelete", {
         method: "DELETE",
         body: JSON.stringify({item: itemText, category: itemCat}),
@@ -40,20 +42,10 @@ async function deleteItem(itemText,itemCat){
     })
     const data = await res.json()
             if (res.status === 201){
-              console.log("Deleted")
+              domListItem.remove()
+              
             }
 }
 
 
 
-// document.querySelector(".editForm").addEventListener("click", e => {
-//     let edittarget = e.target.innerText
-//     if(edittarget == "Cancel"){
-//         document.querySelector(".editForm").classList.add("hidden")
-//     } else if (edittarget == "Confirm Edit"){
-//         let editrequest = {
-//             itemTextPrev: itemTextPrev
-//         }
-//         fetch("/shoppinglistedit")
-//     }
-// });
