@@ -29,8 +29,23 @@ function editItemShow(itemText, itemCat){
     itemCategoryPrev = itemCat
 };
 
+
+document.querySelector(".editForm").addEventListener("click", e =>{
+    let target = e.target.innerText
+    if (target == "Confirm Edit"){
+        console.log(e)
+    } else if (target == "Cancel"){
+        editItemShow()
+    } 
+
+})
+
 async function editItem(){
-    
+    const res = await fetch("/shoppinglistedit", {
+        method: "PUT",
+        body: JSON.stringify({item: itemTextPrev, category: itemCatPrev}),
+        headers:{"Content-type": "application/json"}
+    })
 }
 
 
