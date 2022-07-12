@@ -60,9 +60,26 @@ app.post('/shoppinglist', (req, res) => {
 });
 
 // Editting items (PUT):
-app.put('/shoppinglistedit', (req, res) => {
-    console.log(req.body)
-    
+app.put('/shoppinglistedit', async (req, res) => {
+    const item = req.body
+    const itemOld = {
+        item: item["item"],
+        category: item["category"]
+    }
+    const itemNew = {
+        item: item["editItem"],
+        category: item["editCat"]
+    }
+    console.log(itemNew)
+    await collection.replaceOne(itemOld, itemNew)
+        .then(item => {
+            res.status(201).json({message: "Item updated", item})
+        })
+        .catch(error => {
+            res
+                .status(400)
+                .json({message: "an error occured", error: error.message})
+        })
   })
 
 

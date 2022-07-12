@@ -32,20 +32,31 @@ function editItemShow(itemText, itemCat){
 
 document.querySelector(".editForm").addEventListener("click", e =>{
     let target = e.target.innerText
+    
     if (target == "Confirm Edit"){
-        console.log(e)
+        let itemText = e.path[1].children[0].value
+        let itemCat = e.path[1].children[1].value
+        editItem(itemText, itemCat)
     } else if (target == "Cancel"){
         editItemShow()
     } 
 
 })
 
-async function editItem(){
+async function editItem(itemText, itemCat){
     const res = await fetch("/shoppinglistedit", {
         method: "PUT",
-        body: JSON.stringify({item: itemTextPrev, category: itemCatPrev}),
+        body: JSON.stringify({item: itemTextPrev, category: itemCategoryPrev,
+        editItem: itemText,
+        editCat: itemCat,
+        }),
         headers:{"Content-type": "application/json"}
     })
+    const data = await res.json()
+    if (res.status === 201){
+        console.log("yay!")
+        
+      }
 }
 
 
