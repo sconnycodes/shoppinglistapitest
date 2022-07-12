@@ -7,6 +7,7 @@ shoppingList.addEventListener('click', e => {
     if (target == "Edit"){
         let itemText = e.path[1].children[0].innerText
         let itemCat = e.path[1].children[1].innerText
+        itemEditLocation = e
         editItemShow(itemText, itemCat)
     } else if (target == "Delete"){
         let itemText = e.path[1].children[0].innerText
@@ -20,6 +21,7 @@ shoppingList.addEventListener('click', e => {
 // existing item data for sending to db to identify document to be edited:
 let itemTextPrev 
 let itemCategoryPrev
+let itemEditLocation
 // editItem function & form
 function editItemShow(itemText, itemCat){
     document.querySelector(".editForm").classList.toggle("hidden")
@@ -55,7 +57,10 @@ async function editItem(itemText, itemCat){
     const data = await res.json()
     if (res.status === 201){
         console.log("yay!")
-        
+        console.log(itemEditLocation)
+        itemEditLocation.path[1].children[0].innerText = itemText
+        itemEditLocation.path[1].children[1].innerText = itemCat
+        editItemShow()
       }
 }
 
