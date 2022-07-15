@@ -4,7 +4,7 @@
 
 /*Class used for hiding edit element etc*/
 .hidden {
-    display: none;
+    visibility: hidden;
 }
 
 body {
