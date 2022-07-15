@@ -13,7 +13,6 @@ shoppingList.addEventListener('click', e => {
         let itemText = e.path[1].children[0].innerText
         let itemCat = e.path[1].children[1].innerText
         let domListItem = e.path[1]
-        console.log("hello")
         deleteItem(itemText,itemCat,domListItem)
     } 
 })
@@ -34,7 +33,6 @@ function editItemShow(itemText, itemCat){
 
 document.querySelector(".editForm").addEventListener("click", e =>{
     let target = e.target.innerText
-    
     if (target == "Confirm Edit"){
         let itemText = e.path[1].children[0].value
         let itemCat = e.path[1].children[1].value

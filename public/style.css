@@ -38,6 +38,8 @@ button {
   touch-action: manipulation;
   vertical-align: middle;
   white-space: nowrap;
+  -webkit-appearance: none;
+  cursor: pointer;
 }
 
 button:focus:not(:focus-visible):not(.focus-visible) {
@@ -67,6 +69,3 @@ button:active {
 }
 
 
-button {
-  -webkit-appearance: none;
-}

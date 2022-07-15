@@ -30,7 +30,7 @@ let db,
 
 MongoClient.connect(dbConnectionStr)
     .then(client => {
-        console.log(`Connected to database`)
+        // console.log(`Connected to database`)
         db = client.db(dbName)
         collection = db.collection('shoppinglist')
         
@@ -50,10 +50,10 @@ app.get(`/`, (req, res) => {
 
 // Adding items to the list:
 app.post('/shoppinglist', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     collection.insertOne(req.body)
     .then(result => {
-        console.log(result)
+        // console.log(result)
         res.redirect("/")
     })
     .catch(error => console.error(error))
@@ -70,7 +70,7 @@ app.put('/shoppinglistedit', async (req, res) => {
         item: item["editItem"],
         category: item["editCat"]
     }
-    console.log(itemNew)
+    // console.log(itemNew)
     await collection.replaceOne(itemOld, itemNew)
         .then(item => {
             res.status(201).json({message: "Item updated", item})
