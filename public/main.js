@@ -1,4 +1,4 @@
-const shoppingList = document.querySelector('#shopping')
+// const shoppingList = document.querySelector('#shopping')
 
 const buttons = document.querySelectorAll("button")
 console.log(buttons)
@@ -10,14 +10,17 @@ let itemEditLocation
 buttons.forEach(button => {
     button.addEventListener("click", e => {
         // First identify if edit or delete button clicked:
-          let target = e.target.innerText
-          
-          if (target == "Edit"){
+        //   let target = e.target.innerText
+        const {target} = e
+        
+        const {innerText} = target 
+        console.log
+          if (innerText == "Edit"){
               let itemText = e.path[1].children[0].innerText
               let itemCat = e.path[1].children[1].innerText
               itemEditLocation = e
               editItemShow(itemText, itemCat)
-          } else if (target == "Delete"){
+          } else if (innerText == "Delete"){
               let itemText = e.path[1].children[0].innerText
               let itemCat = e.path[1].children[1].innerText
               let domListItem = e.path[1]
