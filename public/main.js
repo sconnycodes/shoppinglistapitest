@@ -1,5 +1,10 @@
 const shoppingList = document.querySelector('#shopping')
 
+// existing item data for sending to db to identify document to be edited:
+let itemTextPrev 
+let itemCategoryPrev
+let itemEditLocation
+
 shoppingList.addEventListener('click', e => {
   // First identify if edit or delete button clicked:
     let target = e.target.innerText
@@ -17,10 +22,7 @@ shoppingList.addEventListener('click', e => {
     } 
 })
 
-// existing item data for sending to db to identify document to be edited:
-let itemTextPrev 
-let itemCategoryPrev
-let itemEditLocation
+
 // editItem function & form
 function editItemShow(itemText, itemCat){
     document.querySelector(".editForm").classList.toggle("hidden")
@@ -44,7 +46,7 @@ document.querySelector(".editForm").addEventListener("click", e =>{
 })
 
 async function editItem(itemText, itemCat){
-    const res = await fetch("/shoppinglistedit", {
+    let res = await fetch("/shoppinglistedit", {
         method: "PUT",
         body: JSON.stringify({item: itemTextPrev, category: itemCategoryPrev,
         editItem: itemText,
@@ -52,10 +54,10 @@ async function editItem(itemText, itemCat){
         }),
         headers:{"Content-type": "application/json"}
     })
-    const data = await res.json()
+    let data = await res.json()
     if (res.status === 201){
-        console.log("yay!")
-        console.log(itemEditLocation)
+        // console.log("yay!")
+        // console.log(itemEditLocation)
         itemEditLocation.path[1].children[0].innerText = itemText
         itemEditLocation.path[1].children[1].innerText = itemCat
         editItemShow()
