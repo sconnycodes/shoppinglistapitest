@@ -19,7 +19,7 @@
         <button type="submit">Submit</button>
     </form>
 
-    <ul id="shopping">
+    <ul id="shopping" onclick="void(0)">
         <!-- Loop through quotes -->
         <% for(let i = 0; i < shopping.length; i++) {%>
           <li class="shoppingListItem">
@@ -33,7 +33,7 @@
         <% } %>
     </ul>
   
-    <section class="hidden editForm">
+    <section class="hidden editForm" onclick="void(0)">
       <input type="text" placeholder="" name="item" class="editItemPlaceholder">
       <input type="text" placeholder="" name="category" class="editCategoryPlaceholder">
       <button class="confirmEdit" name="confirmEdit">Confirm Edit</button>
