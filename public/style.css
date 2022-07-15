@@ -39,9 +39,12 @@ button {
   vertical-align: middle;
   white-space: nowrap;
   -webkit-appearance: none;
-  cursor: pointer;
+  
 }
 
+* {
+  cursor: pointer;
+}
 /* button:focus:not(:focus-visible):not(.focus-visible) {
   box-shadow: none;
   outline: none;
