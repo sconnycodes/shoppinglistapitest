@@ -1,27 +1,31 @@
 const shoppingList = document.querySelector('#shopping')
 
-const clickHandler = ('ontouchstart' in document.documentElement ? "touchstart" : "click");
+const buttons = document.querySelectorAll("button")
+console.log(buttons)
 // existing item data for sending to db to identify document to be edited:
 let itemTextPrev 
 let itemCategoryPrev
 let itemEditLocation
 
-shoppingList.addEventListener(clickHandler, e => {
-  // First identify if edit or delete button clicked:
-    let target = e.target.innerText
-    
-    if (target == "Edit"){
-        let itemText = e.path[1].children[0].innerText
-        let itemCat = e.path[1].children[1].innerText
-        itemEditLocation = e
-        editItemShow(itemText, itemCat)
-    } else if (target == "Delete"){
-        let itemText = e.path[1].children[0].innerText
-        let itemCat = e.path[1].children[1].innerText
-        let domListItem = e.path[1]
-        deleteItem(itemText,itemCat,domListItem)
-    } 
+buttons.forEach(button => {
+    button.addEventListener("click", e => {
+        // First identify if edit or delete button clicked:
+          let target = e.target.innerText
+          
+          if (target == "Edit"){
+              let itemText = e.path[1].children[0].innerText
+              let itemCat = e.path[1].children[1].innerText
+              itemEditLocation = e
+              editItemShow(itemText, itemCat)
+          } else if (target == "Delete"){
+              let itemText = e.path[1].children[0].innerText
+              let itemCat = e.path[1].children[1].innerText
+              let domListItem = e.path[1]
+              deleteItem(itemText,itemCat,domListItem)
+          } 
+      })
 })
+
 
 
 // editItem function & form
