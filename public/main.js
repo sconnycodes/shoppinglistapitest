@@ -1,11 +1,12 @@
 const shoppingList = document.querySelector('#shopping')
 
+const clickHandler = ('ontouchstart' in document.documentElement ? "touchstart" : "click");
 // existing item data for sending to db to identify document to be edited:
 let itemTextPrev 
 let itemCategoryPrev
 let itemEditLocation
 
-shoppingList.addEventListener('click', e => {
+shoppingList.addEventListener(clickHandler, e => {
   // First identify if edit or delete button clicked:
     let target = e.target.innerText
     
