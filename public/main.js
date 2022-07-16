@@ -48,7 +48,7 @@ document.querySelector(".editForm").addEventListener("click", e =>{
         let itemCat = e.path[1].children[1].value
         editItem(itemText, itemCat)
     } else if (target == "Cancel"){
-        editItemShow()
+        // editItemShow()
     } 
 
 })
