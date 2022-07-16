@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
 
 /*Class used for hiding edit element etc*/
-/* .hidden {
+.hidden {
     visibility: hidden;
-} */
+}
 
 body {
     padding: 1%;
@@ -26,25 +26,22 @@ button {
   cursor: pointer;
   display: inline-block;
   
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 600;
-  line-height: 20px;
-  padding: 6px 16px;
-  position: relative;
+  line-height: 1rem;
+  padding: 0.35rem 0.75rem;
+  margin-bottom: 0.24rem;
   text-align: center;
   text-decoration: none;
   user-select: none;
   -webkit-user-select: none;
-  touch-action: manipulation;
+  
   vertical-align: middle;
   white-space: nowrap;
   -webkit-appearance: none;
   
 }
 
-* {
-  cursor: pointer;
-}
 /* button:focus:not(:focus-visible):not(.focus-visible) {
   box-shadow: none;
   outline: none;

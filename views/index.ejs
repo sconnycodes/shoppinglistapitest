@@ -26,13 +26,13 @@
             <!-- Output name from the iterated quote object -->
             <span><%= shopping[i].item %></span> :
             <!-- Output quote from the iterated quote object -->
-            <span><%= shopping[i].category %></span>
+            <span><%= shopping[i].category %></span><br>
             <button name="editItem" type="submit" >Edit</button>
             <button name="deleteItem" type="submit" >Delete</button>
           </li>
         <% } %>
     </ul>
-  
+    <br>
     <section class="hidden editForm" >
       <input type="text" placeholder="" name="item" class="editItemPlaceholder">
       <input type="text" placeholder="" name="category" class="editCategoryPlaceholder">
