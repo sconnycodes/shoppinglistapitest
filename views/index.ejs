@@ -26,7 +26,7 @@
             <!-- Output name from the iterated quote object -->
             <span><%= shopping[i].item %></span> :
             <!-- Output quote from the iterated quote object -->
-            <span><%= shopping[i].category %></span><br>
+            <span><%= shopping[i].category %></span>
             <button name="editItem" type="submit" >Edit</button>
             <button name="deleteItem" type="submit" >Delete</button>
           </li>
@@ -36,8 +36,8 @@
     <section class="hidden editForm" >
       <input type="text" placeholder="" name="item" class="editItemPlaceholder">
       <input type="text" placeholder="" name="category" class="editCategoryPlaceholder">
-      <button class="confirmEdit" name="confirmEdit" type="submit" >Confirm Edit</button>
-      <button type="reset" name="cancel" type="submit" >Cancel</button>
+      <button class="confirmEdit" name="confirmEdit" type="button" >Confirm Edit</button>
+      <button type="reset" name="cancel" type="button" >Cancel</button>
     </section>
 
   <script src="/main.js"></script>

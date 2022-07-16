@@ -1,7 +1,10 @@
-// const shoppingList = document.querySelector('#shopping')
+window.addEventListener("DOMContentLoaded", 
+(pageLoad) => {
+
+
 
 const buttons = document.querySelectorAll("button")
-console.log(buttons)
+
 // existing item data for sending to db to identify document to be edited:
 let itemTextPrev 
 let itemCategoryPrev
@@ -87,4 +90,4 @@ async function deleteItem(itemText,itemCat, domListItem){
 }
 
 
-
+})
