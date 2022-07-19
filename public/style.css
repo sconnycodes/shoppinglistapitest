@@ -4,7 +4,7 @@
 
 /*Class used for hiding edit element etc*/
 .hidden {
-    visibility: hidden;
+    display: none;
 }
 
 body {
@@ -12,6 +12,8 @@ body {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     font-size: 1.15rem;
+    background-color: rgb(147, 161, 175);
+    
 }
 
 

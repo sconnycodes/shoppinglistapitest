@@ -13,11 +13,10 @@ let itemEditLocation
 buttons.forEach(button => {
     button.addEventListener("click", e => {
         // First identify if edit or delete button clicked:
-        
+        console.log(e)
         const {target} = e
         
         const {innerText} = target 
-        console.log
           if (innerText == "Edit"){
               let itemText = e.path[1].children[0].innerText
               let itemCat = e.path[1].children[1].innerText
